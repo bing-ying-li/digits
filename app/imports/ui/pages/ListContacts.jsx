@@ -2,6 +2,8 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
+// eslint-disable-next-line no-unused-vars
+import { Stuffs } from '../../api/stuff/Stuff';
 import LoadingSpinner from '../components/LoadingSpinner';
 import Contact from '../components/Contact';
 import { Contacts } from '../../api/contact/Contacts';
@@ -17,11 +19,11 @@ const ListContacts = () => {
     const subscription = Meteor.subscribe(Contacts.userPublicationName);
     const subscription2 = Meteor.subscribe(Notes.userPublicationName);
     // Determine if the subscription is ready
-    const rdy = subscription.ready() && subscription2.ready();
-    // Get the Contacts documents
+    const rdy = subscription.ready() && subscription2.ready;
+    // Get the Stuff documents
     const contactItems = Contacts.collection.find({}).fetch();
-    // Get the Notes documents
     const noteItems = Notes.collection.find({}).fetch();
+    // Get the Note documents
     return {
       contacts: contactItems,
       notes: noteItems,

@@ -1,24 +1,25 @@
 import React from 'react';
 import swal from 'sweetalert';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, HiddenField, LongTextField, SubmitField, TextField } from 'uniforms-bootstrap5';
+// eslint-disable-next-line no-unused-vars
+import { AutoForm, ErrorsField, HiddenField, LongTextField, NumField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { useParams } from 'react-router';
-import LoadingSpinner from '../components/LoadingSpinner';
 import { Contacts } from '../../api/contact/Contacts';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const bridge = new SimpleSchema2Bridge(Contacts.schema);
 
-/* Renders the EditStuff page for editing a single document. */
+/* Renders the EditContact page for editing a single document. */
 const EditContact = () => {
   // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
   const { _id } = useParams();
-  // console.log('EditStuff', _id);
+  // console.log('EditContact', _id);
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { doc, ready } = useTracker(() => {
-    // Get access to Stuff documents.
+    // Get access to Contact documents.
     const subscription = Meteor.subscribe(Contacts.userPublicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready();
@@ -29,7 +30,7 @@ const EditContact = () => {
       ready: rdy,
     };
   }, [_id]);
-  // console.log('EditStuff', doc, ready);
+  // console.log('EditContact', doc, ready);
   // On successful submit, insert the data.
   const submit = (data) => {
     const { firstName, lastName, address, image, description } = data;
@@ -47,20 +48,12 @@ const EditContact = () => {
             <Card>
               <Card.Body>
                 <Row>
-                  <Col>
-                    <TextField name="firstName" />
-                  </Col>
-                  <Col>
-                    <TextField name="lastName" />
-                  </Col>
+                  <Col><TextField name="firstName" /></Col>
+                  <Col><TextField name="lastName" /></Col>
                 </Row>
                 <Row>
-                  <Col>
-                    <TextField name="address" />
-                  </Col>
-                  <Col>
-                    <TextField name="image" />
-                  </Col>
+                  <Col><TextField name="address" /></Col>
+                  <Col><TextField name="image" /></Col>
                 </Row>
                 <LongTextField name="description" />
                 <SubmitField value="Submit" />

@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
-// import contact from '../../ui/components/Contact';
+// eslint-disable-next-line no-unused-vars
+import contact from '../../ui/components/Contact';
 import { Contacts } from '../../api/contact/Contacts';
 
 /* eslint-disable no-console */
@@ -19,14 +20,16 @@ if (Stuffs.collection.find().count() === 0) {
   }
 }
 
+// eslint-disable-next-line no-shadow
 const addContact = (contact) => {
-  console.log(`  Adding: ${contact.lastName}(${contact.owner})`);
+  console.log(` Adding: ${contact.lastName} (${contact.owner})`);
   Contacts.collection.insert(contact);
 };
 
 if (Contacts.collection.find().count() === 0) {
   if (Meteor.settings.defaultContacts) {
-    console.log('Creating default contacts.');
-    Meteor.settings.defaultContacts.forEach(contact => addContact({ contact: contact }));
+    console.log('Creating default contacts');
+    // eslint-disable-next-line no-shadow
+    Meteor.settings.defaultContacts.forEach(contact => addContact(contact));
   }
 }

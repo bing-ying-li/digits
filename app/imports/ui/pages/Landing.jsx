@@ -1,6 +1,7 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import { PeopleFill, FileEarmarkTextFill, Calendar2CheckFill } from 'react-bootstrap-icons';
+import { Calendar2CheckFill, FileEarmarkTextFill, PeopleFill } from 'react-bootstrap-icons';
+
 /* A simple static component to render some text for the landing page. */
 const Landing = () => (
   <Container id="landing-page" className="py-3">
@@ -16,7 +17,6 @@ const Landing = () => (
         <h1>Contact Details</h1>
         <h5>For each contact, you can save their name, address, and phone number.</h5>
       </Col>
-
       <Col xs={4}>
         <Calendar2CheckFill size={100} />
         <h1>Timestamped Notes</h1>

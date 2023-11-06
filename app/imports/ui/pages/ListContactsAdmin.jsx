@@ -2,7 +2,11 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
+// eslint-disable-next-line no-unused-vars
+import { Stuffs } from '../../api/stuff/Stuff';
 import LoadingSpinner from '../components/LoadingSpinner';
+// eslint-disable-next-line no-unused-vars
+import Contact from '../components/Contact';
 import { Contacts } from '../../api/contact/Contacts';
 import ContactAdmin from '../components/ContactAdmin';
 
@@ -27,9 +31,9 @@ const ListContactsAdmin = () => {
   return (ready ? (
     <Container className="py-3">
       <Row className="justify-content-center">
-        <Col md={7}>
+        <Col>
           <Col className="text-center">
-            <h2>List Contacts</h2>
+            <h2>List Contact</h2>
           </Col>
           <Row xs={1} md={2} lg={3} className="g-4">
             {contacts.map((contact) => (<Col key={contact._id}><ContactAdmin contact={contact} /></Col>))}

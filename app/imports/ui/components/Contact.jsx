@@ -6,14 +6,19 @@ import Note from './Note';
 import AddNote from './AddNote';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
+// eslint-disable-next-line react/prop-types
 const Contact = ({ contact, notes }) => (
   <Card className="h-100">
     <Card.Header>
+      {/* eslint-disable-next-line react/prop-types */}
       <Image src={contact.image} width={75} />
-      <Card.Title>{contact.firstName}{contact.lastName}</Card.Title>
+      {/* eslint-disable-next-line react/prop-types */}
+      <Card.Title>{contact.firstName} {contact.lastName}</Card.Title>
+      {/* eslint-disable-next-line react/prop-types */}
       <Card.Subtitle>{contact.address}</Card.Subtitle>
     </Card.Header>
     <Card.Body>
+      {/* eslint-disable-next-line react/prop-types */}
       <Card.Text>{contact.description}</Card.Text>
       <ListGroup variant="flush">
         {notes.map((note) => <Note key={note._id} note={note} />)}

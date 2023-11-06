@@ -5,6 +5,8 @@ import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
+// eslint-disable-next-line no-unused-vars
+import { Stuffs } from '../../api/stuff/Stuff';
 import { Contacts } from '../../api/contact/Contacts';
 
 // Create a schema to specify the structure of the data to appear in the form.
@@ -18,7 +20,7 @@ const formSchema = new SimpleSchema({
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
-/* Renders the AddStuff page for adding a document. */
+/* Renders the AddContact page for adding a document. */
 const AddContact = () => {
 
   // On submit, insert the data.
@@ -49,20 +51,12 @@ const AddContact = () => {
             <Card>
               <Card.Body>
                 <Row>
-                  <Col>
-                    <TextField name="firstName" />
-                  </Col>
-                  <Col>
-                    <TextField name="lastName" />
-                  </Col>
+                  <Col><TextField name="firstName" /></Col>
+                  <Col><TextField name="lastName" /></Col>
                 </Row>
                 <Row>
-                  <Col>
-                    <TextField name="address" />
-                  </Col>
-                  <Col>
-                    <TextField name="image" />
-                  </Col>
+                  <Col><TextField name="address" /></Col>
+                  <Col><TextField name="image" /></Col>
                 </Row>
                 <LongTextField name="description" />
                 <SubmitField />

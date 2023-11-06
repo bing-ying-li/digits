@@ -1,28 +1,25 @@
 import React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField, HiddenField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, HiddenField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 // eslint-disable-next-line no-unused-vars
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import PropTypes from 'prop-types';
-// eslint-disable-next-line no-unused-vars
-import { Contacts } from '../../api/contact/Contacts';
 import { Notes } from '../../api/note/Notes';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
   note: String,
-  contactId: String,
   owner: String,
+  contactId: String,
   createdAt: Date,
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
-/* Renders the AddStuff page for adding a document. */
-// eslint-disable-next-line react/prop-types
+/* Renders the AddNote page for adding a document. */
 const AddNote = ({ owner, contactId }) => {
 
   // On submit, insert the data.
@@ -47,13 +44,10 @@ const AddNote = ({ owner, contactId }) => {
     <Container className="py-3">
       <Row className="justify-content-center">
         <Col xs={10}>
-          <Col className="text-center"><h4>Timestamped Note</h4></Col>
+          <Col className="text-center"><h4>Add Timestamped Note</h4></Col>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
             <Card>
               <Card.Body>
-                <LongTextField name="note" />
-                <SubmitField />
-                <ErrorsField />
                 <TextField name="note" />
                 <SubmitField value="Submit" />
                 <ErrorsField />
@@ -69,8 +63,9 @@ const AddNote = ({ owner, contactId }) => {
   );
 };
 
-AddNote.prototype = {
-  owner: PropTypes.string,
+AddNote.propTypes = {
+  owner: PropTypes.string.isRequired,
   contactId: PropTypes.string.isRequired,
 };
+
 export default AddNote;

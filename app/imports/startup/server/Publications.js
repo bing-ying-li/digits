@@ -1,6 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
+// eslint-disable-next-line no-unused-vars
+import Contact from '../../ui/components/Contact';
 import { Contacts } from '../../api/contact/Contacts';
 import { Notes } from '../../api/note/Notes';
 
@@ -13,6 +15,7 @@ Meteor.publish(Stuffs.userPublicationName, function () {
   }
   return this.ready();
 });
+
 Meteor.publish(Contacts.userPublicationName, function () {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
@@ -20,6 +23,7 @@ Meteor.publish(Contacts.userPublicationName, function () {
   }
   return this.ready();
 });
+
 Meteor.publish(Notes.userPublicationName, function () {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
@@ -27,6 +31,7 @@ Meteor.publish(Notes.userPublicationName, function () {
   }
   return this.ready();
 });
+
 // Admin-level publication.
 // If logged in and with admin role, then publish all documents from all users. Otherwise, publish nothing.
 Meteor.publish(Stuffs.adminPublicationName, function () {
