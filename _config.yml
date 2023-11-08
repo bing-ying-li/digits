@@ -2,6 +2,6 @@ title: meteor-application-template-react
 description: A template for quickly starting Meteor application development
 google_analytics:
 show_downloads: true
-theme: jekyll-theme-midnight
+theme: jekyll-theme-merlot
 gems:
   - jekyll-mentions
