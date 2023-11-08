@@ -6,14 +6,6 @@ import { Roles } from 'meteor/alanning:roles';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
-// eslint-disable-next-line no-unused-vars
-import ListStuff from '../pages/ListStuff';
-// eslint-disable-next-line no-unused-vars
-import ListStuffAdmin from '../pages/ListStuffAdmin';
-// eslint-disable-next-line no-unused-vars
-import AddStuff from '../pages/AddStuff';
-// eslint-disable-next-line no-unused-vars
-import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
 import SignUp from '../pages/SignUp';
 import SignOut from '../pages/SignOut';
